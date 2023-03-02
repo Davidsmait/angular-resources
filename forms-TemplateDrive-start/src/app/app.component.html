@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2" >
+      <form (ngSubmit)="onSubmit(formRef)" #formRef="ngForm">
+        <div ngModelGroup="userData" #userData="ngModelGroup">
+          <div class="form-group">
+            <label for="email">email</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              class="form-control"
+              ngModel
+              required
+              email
+              #emailRef="ngModel">
+          </div>
+          <span class="help-block" *ngIf="emailRef.invalid && emailRef.touched">invalid email!</span>
+          <div class="form-group">
+            <label for="plan">Plan</label>
+            <select id="plan" name="plan" class="form-control" [(ngModel)]="planOption">
+              <option value="basic">Basic</option>
+              <option value="advanced">Advanced</option>
+              <option value="pro">Pro</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="password">password</label>
+            <input
+              id="password"
+              class="form-control"
+              type="password"
+              required
+              ngModel
+              name="password"
+              #password="ngModel">
+          </div>
+          <span class="help-block" *ngIf="password.invalid && password.touched">invalid email!</span>
+          <span *ngIf="formRef.invalid && formRef.touched" class="help-block">invalid form</span>
+          <div class="form-group">
+            <button class="btn btn-primary" type="submit"> Submitting</button>
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+</div>
